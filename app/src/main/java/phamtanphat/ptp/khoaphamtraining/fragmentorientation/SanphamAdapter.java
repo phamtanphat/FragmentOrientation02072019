@@ -13,7 +13,11 @@ import java.util.ArrayList;
 public class SanphamAdapter extends  RecyclerView.Adapter<SanphamAdapter.SanphamHolder>{
 
     private ArrayList<Sanpham> mSanphams;
+    private OnItemClickListener mOnItemClickListener;
 
+    public void onItemClick(OnItemClickListener mOnItemClickListener){
+        this.mOnItemClickListener = mOnItemClickListener;
+    }
     public SanphamAdapter(ArrayList<Sanpham> mSanphams) {
         this.mSanphams = mSanphams;
     }
@@ -30,6 +34,8 @@ public class SanphamAdapter extends  RecyclerView.Adapter<SanphamAdapter.Sanpham
     public void onBindViewHolder(@NonNull SanphamHolder holder, int position) {
         Sanpham sanpham = mSanphams.get(position);
         holder.txtDetail.setText(sanpham.getTen());
+
+
     }
 
     @Override
@@ -39,9 +45,15 @@ public class SanphamAdapter extends  RecyclerView.Adapter<SanphamAdapter.Sanpham
 
     class SanphamHolder extends RecyclerView.ViewHolder{
         TextView txtDetail;
-        public SanphamHolder(@NonNull View itemView) {
+        public SanphamHolder(@NonNull final View itemView) {
             super(itemView);
-            txtDetail = itemView.findViewById(R.id.textviewChitiet);
+            txtDetail = itemView.findViewById(R.id.textviewItemsanpham);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mOnItemClickListener.onClickItem(itemView,getOldPosition());
+                }
+            });
         }
 
     }

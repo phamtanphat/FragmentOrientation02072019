@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:weightSum="10"
+    android:layout_height="match_parent">
+
+    <fragment
+        tools:layout="@layout/fragment_list"
+        android:id="@+id/fragmentLandList"
+        android:name="phamtanphat.ptp.khoaphamtraining.fragmentorientation.ListFragment"
+        android:layout_weight="4"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"/>
+    <fragment
+        tools:layout="@layout/fragment_detail"
+        android:id="@+id/fragmentLandDetail"
+        android:name="phamtanphat.ptp.khoaphamtraining.fragmentorientation.DetailFragment"
+        android:layout_weight="6"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"/>
+</LinearLayout>
