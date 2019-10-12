@@ -41,8 +41,8 @@ public class ListFragment extends Fragment {
             @Override
             public void onClickItem(View v, int position) {
 
-                DetailFragment detailFragment = (DetailFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.textviewChitiet);
-                if (detailFragment != null){
+                DetailFragment detailFragment = (DetailFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.fragmentLandDetail);
+                if (detailFragment != null && detailFragment.isInLayout()){
                     onListenValue.onChange(mSanphams.get(position).getTen());
                 }else{
                     Intent intent = new Intent(getActivity(),Main2Activity.class);
