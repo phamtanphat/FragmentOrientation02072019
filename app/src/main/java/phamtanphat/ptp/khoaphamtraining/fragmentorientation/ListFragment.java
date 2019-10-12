@@ -1,6 +1,7 @@
 package phamtanphat.ptp.khoaphamtraining.fragmentorientation;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -39,7 +40,15 @@ public class ListFragment extends Fragment {
         ((SanphamAdapter)mRecyclerView.getAdapter()).onItemClick(new OnItemClickListener() {
             @Override
             public void onClickItem(View v, int position) {
-                onListenValue.onChange(mSanphams.get(position).getTen());
+
+                DetailFragment detailFragment = (DetailFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.textviewChitiet);
+                if (detailFragment != null){
+                    onListenValue.onChange(mSanphams.get(position).getTen());
+                }else{
+                    Intent intent = new Intent(getActivity(),Main2Activity.class);
+                    intent.putExtra("chuoi",mSanphams.get(position).getTen());
+                    startActivity(intent);
+                }
             }
         });
         return mView;

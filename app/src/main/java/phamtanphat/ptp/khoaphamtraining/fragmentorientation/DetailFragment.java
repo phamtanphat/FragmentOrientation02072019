@@ -25,6 +25,16 @@ public class DetailFragment extends Fragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_detail, container, false);
         txtChitiet = view.findViewById(R.id.textviewChitiet);
+
+        ListFragment listFragment = (ListFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.fragmentLandList);
+        if (listFragment != null){
+            listFragment.setOnListenValue(new OnListenValue() {
+                @Override
+                public void onChange(String text) {
+                    txtChitiet.setText(text);
+                }
+            });
+        }
         return view;
     }
 
