@@ -51,7 +51,7 @@ public class SanphamAdapter extends  RecyclerView.Adapter<SanphamAdapter.Sanpham
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    mOnItemClickListener.onClickItem(itemView,getOldPosition());
+                    mOnItemClickListener.onClickItem(itemView,getLayoutPosition());
                 }
             });
         }

@@ -20,6 +20,7 @@ public class ListFragment extends Fragment {
     RecyclerView mRecyclerView;
     SanphamAdapter mSanphamAdapter;
     ArrayList<Sanpham> mSanphams;
+    OnListenValue onListenValue;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -38,10 +39,13 @@ public class ListFragment extends Fragment {
         ((SanphamAdapter)mRecyclerView.getAdapter()).onItemClick(new OnItemClickListener() {
             @Override
             public void onClickItem(View v, int position) {
-                Toast.makeText(getActivity(), mSanphams.get(position).getTen(), Toast.LENGTH_SHORT).show();
+                onListenValue.onChange(mSanphams.get(position).getTen());
             }
         });
         return mView;
+    }
+    public void setOnListenValue(OnListenValue onListenValue){
+        this.onListenValue = onListenValue;
     }
 
 }
